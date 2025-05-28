@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Прогноз погоды</h1>
+        
+        <div class="navigation">
+            <a href="/" title="Обновить страницу"><i class="fas fa-home"></i> Главная</a>
+            <a href="/stats" title="Просмотр статистики поиска"><i class="fas fa-chart-bar"></i> Статистика поиска</a>
+        </div>
+        
+        <div class="container">
+            <div class="form-group">
+                <div class="suggestions-container">
+                    <input type="text" id="city-input" placeholder="Введите название города" autocomplete="off">
+                    <div class="suggestions" id="suggestions"></div>
+                </div>
+            </div>
+            <button id="search-btn"><i class="fas fa-search"></i> Узнать погоду</button>
+            
+            <div class="history" id="history-container" style="display: none;">
+                <div class="history-title"><i class="fas fa-history"></i> Ваша история поиска:</div>
+                <div class="history-items" id="history-items"></div>
+            </div>
+            
+            <div class="weather-results" id="weather-results">
+                <div class="city-info" id="city-info"></div>
+                <div class="forecast-container" id="forecast-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/weather.js') }}"></script>
+</body>
+</html> 

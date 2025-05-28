@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика поиска городов</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/stats.css') }}">
+</head>
+<body>
+    <h1>Статистика поиска городов</h1>
+    
+    <div class="navigation">
+        <a href="/">← Вернуться на главную</a>
+    </div>
+    
+    <div class="stats-container">
+        {% if stats %}
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Город</th>
+                    <th class="count-column">Количество запросов</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in stats %}
+                <tr>
+                    <td>{{ item.city }}</td>
+                    <td class="count-column">{{ item.count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="empty-message">Статистика пуста. Попробуйте поискать погоду для нескольких городов.</p>
+        {% endif %}
+    </div>
+</body>
+</html> 
