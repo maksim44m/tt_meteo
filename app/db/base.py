@@ -26,10 +26,6 @@ class DB:
 
         self.all_tables = Base.metadata.tables
 
-    async def init_db(self):
-        async with self.engine.begin() as conn:
-            await conn.run_sync(Base.metadata.create_all)
-
     async def get_session(self):
         async with self.Session() as session:
             try:
@@ -37,7 +33,6 @@ class DB:
             except Exception as e:
                 await session.rollback()
                 raise e
-
 
     async def add_search_history(
             self, 
